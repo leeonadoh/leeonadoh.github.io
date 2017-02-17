@@ -1,0 +1,175 @@
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    margin: 3em auto;
+    width: 800px;
+    counter-reset: h2counter;
+    background-color: #f0f0f0;
+    line-height: 1.5;
+}
+
+p, ul, ol{
+    margin: 0.5em 0em 0.75em 0em;
+}
+
+ul ol, ol ul{
+    margin: 0.3em 0em 0.3em 0em;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:link{
+    color: #1d5287;
+    border-bottom: 1px solid #ccc;
+}
+
+a:hover{
+    color: #3d82c7;
+}
+
+a:visited{
+    color: #644495;
+    border-bottom: 1px solid #ccc;
+}
+
+.nostyle {
+    line-height: 1;
+    border: none;
+}
+
+table {
+    margin: 0.5em auto;
+    border-collapse: collapse;
+    border: 2px solid #456f99;
+}
+
+th, td {
+    border: 1px solid #99acbf;
+    padding: 0.2em 0.5em;
+    margin: 0;
+}
+
+th {
+    font-weight: bold;
+    color: #f0f0f0;
+    background-color: #456f99;
+    text-align: left;
+    border: 2px solid #456f99;
+}
+td.highlight {
+    background-color: #e4e6e9;
+}
+
+.a-right{
+    text-align: right;
+}
+
+.a-center{
+    text-align: center;
+}
+
+.quote{
+    font-style: italic;
+    color: #466380;
+    width: 600px;
+    margin: 1.5em auto;
+    padding: 0 1em;
+    border-left: 8px solid #c3ced9;
+    line-height: 110%;
+}
+
+
+figure {
+    margin: 1em auto; /* not needed unless you want centered */
+}
+
+figure img{
+    display: block;
+    margin: 0 auto;
+}
+
+figure figcaption {
+    text-align: center;
+    font-size: 0.9em;
+    font-style: italic;
+    font-weight: normal;
+    color: #555;
+}
+
+hr {
+    border-color: #ccc;
+    border-style: solid;
+    border-width: 1px 0 0;
+    clear: both;
+    margin: 20px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0.75em 0em 0.25em 0em;
+    color: #244566;
+}
+
+h1, h2, h3 {
+    font-family: 'Roboto Slab', serif;
+}
+
+h1 {
+    counter-reset: h2counter;
+    font-size: 2.5em;
+}
+
+h1.title {
+    font-size: 3em;
+    padding: 0.5em 0em 0.5em 0em;
+    border-bottom: 1px solid #bbb;
+    border-top: 1px solid #bbb;
+}
+
+h2.nocount:before {
+    content: none;
+    counter-increment: none;
+}
+
+h2:before {
+    content: counter(h2counter) ":\0000a0\0000a0";
+    counter-increment: h2counter;
+}
+
+h2 {
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 0.1em;
+    font-size: 2em;
+    counter-reset: h3counter;
+}
+
+h3:before {
+    content: counter(h2counter) "." counter(h3counter) ":\0000a0\0000a0";
+    counter-increment: h3counter;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+h4, h6 {
+    font-weight: normal;
+}
+
+h3, h4 {
+    font-size: 1.5em;
+}
+
+h5, h6 {
+    font-size: 1.1em;
+    font-style: italic;
+}
+
+.scrollToTop{
+    display: none;
+    padding:10px; 
+    position:fixed;
+    bottom:0px;
+    right:0px;
+}
