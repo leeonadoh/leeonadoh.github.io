@@ -176,7 +176,7 @@
     <img src="img/3d-2d-project.png">
     <figcaption>Figure6. A projection down the $x$ axis onto the $YZ$ plane of an AABB and a triangle.</figcaption>
 </figure>
-<p>For simplicity, the first thing we do is to translate the AABB and triangle such that the AABB's center $c$ is at the origin $[0,0,0]$. This can be easily calculated by subtracting the triangle vertices $\vec t_0,\vec t_1,\vec t_2$ and $c$ itself by $c$. We will assume that $c$ is at the origin from this point forth.</p> 
+<p>For simplicity, the first thing we do is to translate the AABB and triangle such that the AABB's center $c$ is at the origin $[0,0,0]$. This can be easily calculated by subtracting the triangle vertices $\vec t_0,\vec t_1,\vec t_2$ and $c$ itself by $c$. We will assume that $c$ is at the origin from this point forth.</p>
 <p>Finding these edge normals are quite easy if we notice their properties. First, notice that they are all orthogonal to the $x$ axis, as they exist on the $YZ$ plane. In addition, they must be orthogonal to the edges of the polygon, as that is the definition of a normal vector. Therefore, the projected edge normals can be easily calculated as a cross product of the $x$ unit vector, and the polygon's edge.</p>
 
 <h5>Projecting onto the separating axes defined by the AABB's edge normals</h5>
@@ -360,7 +360,7 @@ if (lambda_y0 < lambda_0 && lambda_ym < lambda_0) entryNode = 1;
 <p>To:</p>
 <pre><code class="cpp">entryNode = 0;
 // | is the inclusive or bit operator.
-if (entryLine = X && lambda_ym < lambda_0) entryNode |= 2; 
+if (entryLine = X && lambda_ym < lambda_0) entryNode |= 2;
 if (entryLine = Y && lambda_xm < lambda_0) entryNode |= 1;
 </code></pre>
 <p>In the 2D case, using bit operations seems pointless. But this is because there is only two axes. In 3D, using bit operations will significantly reduce the number of conditionals</p>
@@ -447,7 +447,7 @@ if (entryLine = Y && lambda_xm < lambda_0) entryNode |= 1;
 <p>For example, if current node is 0, and $\lambda_{xm} = min(\lambda_{xm},\lambda_{ym}) \implies$ exit line $Y$, then the next node in the traversal is child 2. But if $\lambda_{ym} = min(\lambda_{xm},\lambda_{ym}) \implies$ exit line $X$, then the next node is child 1.</p>
 <p>Programatically, this is best though of as a do-while loop:</p>
 <pre><code class="nohighlight">do {
-    Find curNode's exit lambdas according to above tables. 
+    Find curNode's exit lambdas according to above tables.
     Find lambda_1m = min(exit lambdas).
     Find the nextNode respective to lambda_1m.
     Process curNode via recursive call.
@@ -558,7 +558,7 @@ if (y < 0) flip |= 1;
 <p>Then, take the number(s) under the $+x,\;+y$ column and XOR it with <code>flip</code>. The result is the same number as the ones under the column you've picked, with the exception of 4, since its binary representation '100' is three bits long. <code>4 ^ flip</code> will only generate a number greater than or equal to 4.</p>
 <p>Therefore, mirroring the current node is as simple as finding which components of the ray's direction vector $\vec d$ is negative, composing the <code>flip</code> integer, and applying a few XORs. This procedure need only be applied during the recursive step when we're specifying which node to recurse on, effectively mirroring the tree. All other procedures remain identical:</p>
 <pre><code class="nohighlight">do {
-    Find curNode's exit lambdas according to above tables. 
+    Find curNode's exit lambdas according to above tables.
     Find lambda_1m = min(exit lambdas).
     Find the nextNode respective to lambda_1m.
     Process (curNode ^ flip) via recursive call.
@@ -580,7 +580,7 @@ if (y < 0) flip |= 1;
 if (entryPlane == YZ){
     // => lambda_0 = lambda_x0
     if (lambda_ym < lambda_0) entryNode |= 2;
-    if (lambda_zm < lambda_0) entryNode |= 1; 
+    if (lambda_zm < lambda_0) entryNode |= 1;
 }
 else if (entryPlane == XZ){
     // => lambda_0 = lambda_y0
@@ -732,7 +732,7 @@ if (entryPlane != XY && lambda_mz < lambda_0) entryNode |= 1;
     // Return the ray-triangle intersection information, such as the lambda,
     // normal, and texture coordinates.
 compute_lambdas(OctNode t, ray R, double lambda_0s[3], double lambda_1s[3])
-    // Return void, but sets the respective lambdas for ray R given the 
+    // Return void, but sets the respective lambdas for ray R given the
     // octree node.
 process_subtree(double lambda_0s[3], double lambda_1s[3], int flip,
                 Ray R, OctNode t)
@@ -743,7 +743,7 @@ next_node(double lambda_1s[3], int possibleNextNodes[3])
     // number of conditionals.
 tri_intersect(OctNode t, Ray R)
     // Return the intersection info if R intersects some triangle within the
-    // bounds of the AABB defined by t. 
+    // bounds of the AABB defined by t.
 </code></pre>
 <p>We will write the pseudo-code for <code>cast_ray</code> and <code>process_subtree</code> only, since the other ones are straight forward:</p>
 <pre><code>IntersectInfo cast_ray(OctNode root, Ray R){
@@ -777,7 +777,7 @@ tri_intersect(OctNode t, Ray R)
     if (lambda_1 <= 0 || tmin > tmax) return NULL;
 
     // At this point, copyR is not needed anymore. The lambda value are enough
-    // to deduce any future AABB-ray intersections. 
+    // to deduce any future AABB-ray intersections.
     // However, R is needed for finding ray-triangle intersections.
     return process_subtree(lambda_0s, lambda_1s, flip, R, root);
 }
@@ -786,7 +786,7 @@ IntersectInfo process_subtree(double l_0s[3],double l_1s[3],
 int flip, Ray R, OctNode t){
     int curNode;
     // Ignore this node if it is behind the ray origin.
-    if (has_negative_components(l_1s)) return; 
+    if (has_negative_components(l_1s)) return;
 
     // Find entry and exit lambdas, in addition to the entry plane.
     double l_0 = max(l_0s);
@@ -813,7 +813,7 @@ int flip, Ray R, OctNode t){
     int nextNodes[3];
     IntersectInfo intersect;
     do {
-        // For the current node, identify its entry and exit lambdas. 
+        // For the current node, identify its entry and exit lambdas.
         // Set the possibilities for its next nodes.
         if (curNode == 0){
             cl_0s = {l_0s[0], l_0s[1], l_0s[2]}
@@ -857,10 +857,10 @@ int flip, Ray R, OctNode t){
         }
         // Recursively call process_subtree.
         // If an intersection is found in recursive call, return it.
-        // Otherwise, find the next node in the traversal and continue 
+        // Otherwise, find the next node in the traversal and continue
         // searching.
-        // Note that we "mirror" the tree using the flip constant. 
-        intersect = process_subtree(cl_0s, cl_1s, flip, R, 
+        // Note that we "mirror" the tree using the flip constant.
+        intersect = process_subtree(cl_0s, cl_1s, flip, R,
                         node.getChild(curNode^flip));
         if (intersect) return intersect;
         // Find the next nodes
@@ -946,3 +946,7 @@ int flip, Ray R, OctNode t){
 <script>hljs.initHighlightingOnLoad();</script>
 </body></html>
 
+<footer>
+  <hr>
+  <small>&copy; 2017 Leo Sunpeng Li </small>
+</footer>
